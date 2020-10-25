@@ -16,9 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
+from questions import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('registration.backends.simple.urls')),
+    path('', views.question_list, name='question_list'),
+    path('questions/<int:pk>', views.question_details, name='question_details'),
+    path('questions/add/question/', views.add_question, name='add_question'),
+    path('questions/add/answer/', views.add_answer, name='add_answer'),
+    path('questions/<int:pk>/edit/', views.edit_question, name='edit_question'),
+    path('questions/<int:pk>/delete/', views.delete_question, name='delete_question'),
+    path('questions/search/', views.search, name='question_search')
 ]
 
 if settings.DEBUG:

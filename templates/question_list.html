@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>All Questions</h1>
+
+<p><a href="{% url 'add_question' %}">Add New Question</a></p>
+
+<div class="flex flex-wrap">
+    {% for question in question %}
+    <div>
+        <h2>{{ question }}</h2>
+
+        {% if question %}
+        <div class="flex">
+        <div>{{ question }}</div>
+    </div>
+    {% endif %}
+
+    {% if answer %}
+    <div class="flex">
+        <div>{{ answer }}</div>
+    </div>
+    {% endif %}
+
+    <p>
+        <a href="{% url 'edit_question' pk=question.pk %}">Edit Question</a><br>    
+        <a class="red" href="{% url 'delete_question' pk=question.pk %}">Delete Question</a><br> 
+    </p>
+    </div>
+    {% endfor %}
+</div>  
+
+{% endblock %}
