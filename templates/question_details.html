@@ -4,8 +4,13 @@
 <h1>{{ question.question }}</h1>
 
 <div class="flex flex-wrap"> 
-    <li>{{ question.answers }}</li>
+    <ul>
+        {% for answer in answers %}
+        <li>{{ answer.answer }}
+            <a href="#">Favorite</a>
+        </li>
+        {% endfor %}
+    </ul>
 </div>  
-<a href="#">Favorite</a><br>
 
 {% endblock %}

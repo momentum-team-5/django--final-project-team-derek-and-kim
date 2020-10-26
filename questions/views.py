@@ -14,7 +14,7 @@ def question_list(request):
 
 def question_details(request, pk):
     question = get_object_or_404(QuestionBox, pk=pk)
-    answers = question.answers
+    answers = question.answers.all()
 
     if request.method == 'GET':
         form = AnswerForm()
