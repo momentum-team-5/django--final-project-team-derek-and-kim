@@ -20,4 +20,4 @@ class AnswerForm(forms.ModelForm):
 
 
 class SearchForm(forms.Form):
-    title = forms.CharField(max_length=255)
+    question = forms.CharField(max_length=255)

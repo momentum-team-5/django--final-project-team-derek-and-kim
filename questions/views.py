@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.messages import success, error
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from .models import QuestionBox, AnswerBox
 from .forms import QuestionForm, AnswerForm, SearchForm
 
@@ -13,8 +14,25 @@ def question_list(request):
 
 def question_details(request, pk):
     question = get_object_or_404(QuestionBox, pk=pk)
+    answers = question.answers
 
-    return render(request, "question_details.html", {"question": question})
+    if request.method == 'GET':
+        form = AnswerForm()
+
+    else:
+        form = AnswerForm(data=request.POST)
+        if form.is_valid():
+            answer = form.save(commit=False)
+            answer.question = question
+            answer.save()
+            success(request, "Answer saved!")
+
+            return redirect(to="question_details", pk=question.pk)
+
+        else:
+            error(request, "Couldn't save your answer")
+
+    return render(request, "question_details.html", {"question": question, "answers": answers, "form": form})
 
 
 @login_required
@@ -36,21 +54,25 @@ def add_question(request):
 
 
 @login_required
-def add_answer(request):
+def add_answer(request, pk):
+    question = get_object_or_404(QuestionBox, pk=pk)
+
     if request.method == 'GET':
         form = AnswerForm()
-
+        
     else:
         form = AnswerForm(data=request.POST)
+    
         if form.is_valid():
             answer = form.save(commit=False)
+            answer.question = question
             form.save()
             return redirect(to='question_list')
 
         else:
             error(request, "Problem with your submission.")
 
-    return render(request, "add_answer.html", {"form": form})
+    return render(request, "add_answer.html", {"form": form, "question": question})
 
 
 @login_required

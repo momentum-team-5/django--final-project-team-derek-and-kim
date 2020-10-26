@@ -3,24 +3,17 @@
 {% block content %}
 <h1>All Questions</h1>
 
-<p><a href="{% url 'add_question' %}">Add New Question</a></p>
+<p><a href="{% url 'add_question' %}">Ask a Question!</a></p>
 
 <div class="flex flex-wrap">
     {% for question in question %}
     <div>
         <h2>{{ question.question }}</h2>
-
-    {% if question.answer %}
-    <div class="flex">
-        <div>{{ question.answer }}</div>
-    </div>
-    {% endif %}
-
     <p>
-        <a href="{% url 'add_answer' %}">Answer Question</a><br>
+        <a href="{% url 'add_answer' pk=question.pk %}">Answer Question</a><br>
         <a href="{% url 'edit_question' pk=question.pk %}">Edit Question</a><br>    
         <a class="red" href="{% url 'delete_question' pk=question.pk %}">Delete Question</a><br> 
-        <a href="{% url 'question_details' pk=question.pk %}">More Information</a><br>
+        <a href="{% url 'question_details' pk=question.pk %}">See All Answers</a><br>
     </p>
     </div>
     {% endfor %}

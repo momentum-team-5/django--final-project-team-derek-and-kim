@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import QuestionBox, AnswerBox
 
-# Register your models here.
+
+admin.site.register(QuestionBox)
+admin.site.register(AnswerBox)
