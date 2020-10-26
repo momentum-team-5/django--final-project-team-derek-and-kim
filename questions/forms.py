@@ -11,7 +11,7 @@ class QuestionForm(forms.ModelForm):
         ]
 
 
-class AnswerForm(forms.Form):
+class AnswerForm(forms.ModelForm):
     class Meta:
         model = AnswerBox
         fields = [

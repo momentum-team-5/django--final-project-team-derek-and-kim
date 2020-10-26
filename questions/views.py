@@ -27,6 +27,7 @@ def add_question(request):
         if form.is_valid():
             question = form.save(commit=False)
             form.save()
+            return redirect(to='question_list')
 
         else:
             error(request, "Problem with your submission.")
@@ -44,6 +45,7 @@ def add_answer(request):
         if form.is_valid():
             answer = form.save(commit=False)
             form.save()
+            return redirect(to='question_list')
 
         else:
             error(request, "Problem with your submission.")

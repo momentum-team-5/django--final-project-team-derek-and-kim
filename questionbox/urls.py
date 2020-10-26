@@ -27,7 +27,7 @@ urlpatterns = [
     path('questions/add/answer/', views.add_answer, name='add_answer'),
     path('questions/<int:pk>/edit/', views.edit_question, name='edit_question'),
     path('questions/<int:pk>/delete/', views.delete_question, name='delete_question'),
-    path('questions/search/', views.search, name='question_search')
+    path('questions/search/', views.search, name='question_search'),
 ]
 
 if settings.DEBUG:

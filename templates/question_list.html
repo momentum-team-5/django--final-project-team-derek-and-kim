@@ -8,23 +8,19 @@
 <div class="flex flex-wrap">
     {% for question in question %}
     <div>
-        <h2>{{ question }}</h2>
+        <h2>{{ question.question }}</h2>
 
-        {% if question %}
-        <div class="flex">
-        <div>{{ question }}</div>
-    </div>
-    {% endif %}
-
-    {% if answer %}
+    {% if question.answer %}
     <div class="flex">
-        <div>{{ answer }}</div>
+        <div>{{ question.answer }}</div>
     </div>
     {% endif %}
 
     <p>
+        <a href="{% url 'add_answer' %}">Answer Question</a><br>
         <a href="{% url 'edit_question' pk=question.pk %}">Edit Question</a><br>    
         <a class="red" href="{% url 'delete_question' pk=question.pk %}">Delete Question</a><br> 
+        <a href="{% url 'question_details' pk=question.pk %}">More Information</a><br>
     </p>
     </div>
     {% endfor %}
