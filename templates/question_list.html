@@ -6,7 +6,7 @@
 <p><a href="{% url 'add_question' %}">Ask a Question!</a></p>
 
 <div class="flex flex-wrap">
-    {% for question in question %}
+{% for question in question %}
     <div>
         <h2>{{ question.question }}</h2>
     <p>
@@ -18,5 +18,4 @@
     </div>
     {% endfor %}
 </div>  
-
 {% endblock %}

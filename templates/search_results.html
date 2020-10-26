@@ -5,14 +5,10 @@
 <h3>Search Results</h3>
 
 <div class="question-container">
-    
-    {% for question in question %}
-    <div class='question-container'>
+{% for question in question %}
+    <div>
         <h4>{{ question.question }}</h4>
-        <pre class='answer'>{{ answer }}</pre>
     </div>
-
 {% endfor %}
-
 </div>
 {% endblock %}

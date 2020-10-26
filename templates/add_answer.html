@@ -5,12 +5,11 @@
 
 <div>
     <form action="{% url 'add_answer' pk=question.pk %}" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
+    {% csrf_token %}
+    {{ form.as_p }}
     <div>
         <button type="submit">Add Answer</button>
     </div>
     </form>
 </div>
-
 {% endblock %}
