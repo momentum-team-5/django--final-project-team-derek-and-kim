@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>All Questions</h1>
+
 
 <p><a href="{% url 'add_question' %}">Ask a Question!</a></p>
+<h1>All Questions</h1>
 
 <div class="flex flex-wrap">
 {% for question in question %}
