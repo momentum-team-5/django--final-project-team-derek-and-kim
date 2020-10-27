@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.messages import success, error
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.http import JsonResponse
 from .models import QuestionBox, AnswerBox
 from .forms import QuestionForm, AnswerForm, SearchForm
 
@@ -12,6 +13,7 @@ def question_list(request):
     return render(request, "question_list.html", {"question": question})
 
 
+@login_required
 def question_details(request, pk):
     question = get_object_or_404(QuestionBox, pk=pk)
     answers = question.answers.all()
@@ -116,15 +118,19 @@ def search(request):
     return render(request, "search.html", {"form": form})
 
 
+@login_required
 def add_favorite(request, pk):
-    question = get_object_or_404(AnswerBox, id=pk)
+    question = get_object_or_404(QuestionBox, id=pk)
 
     if request.user.is_authenticated:
         if question.favorites.filter(id=request.user.pk).count() == 0:
             question.favorites.add(request.user)
-            success(request, "Favorite added!")
+            message = "Favorite added!"
 
         else:
-            error(request, "Only signed in users can favorite answers.")
+            message = "You can only favorite an answer once."
+        
+    else:
+        message = "Only signed in users can favorite answers."
 
-        return redirect(to="question_list")
+    return JsonResponse({"message": message, "numLikes": numLikes})

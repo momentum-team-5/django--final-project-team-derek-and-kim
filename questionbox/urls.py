@@ -28,6 +28,7 @@ urlpatterns = [
     path('questions/<int:pk>/edit/', views.edit_question, name='edit_question'),
     path('questions/<int:pk>/delete/', views.delete_question, name='delete_question'),
     path('questions/search/', views.search, name='question_search'),
+    path('questions/<int:pk>/add_favorite/', views.add_favorite, name='add_favorite'),
 ]
 
 if settings.DEBUG:

@@ -7,7 +7,7 @@
     <ul>
         {% for answer in answers %}
         <li>{{ answer.answer }}
-            <a href="#">Favorite</a>
+            <button onclick="sendFavorite(this, '{% url 'add_favorite' pk=question.pk %}')">{{ question.numfavorites }} favorites</a>
         </li>
         {% endfor %}
     </ul>
