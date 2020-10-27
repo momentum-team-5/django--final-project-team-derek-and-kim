@@ -131,6 +131,11 @@ STATICFILES_DIRS = [
 
 SIMPLE_BACKEND_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+
+# how to run local email server
+# python -m smtpd -n -c DebuggingServer localhost:1025
 
 # Custom user model
 

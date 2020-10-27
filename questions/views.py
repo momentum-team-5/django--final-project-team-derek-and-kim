@@ -3,8 +3,9 @@ from django.contrib.messages import success, error
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import JsonResponse
+from django.core.mail import send_mail, mail_admins
 from .models import QuestionBox, AnswerBox
-from .forms import QuestionForm, AnswerForm, SearchForm
+from .forms import QuestionForm, AnswerForm, SearchForm, ContactForm
 
 
 def question_list(request):
@@ -136,3 +137,28 @@ def add_favorite(request, pk):
     numLikes = answer.numfavorites()
 
     return JsonResponse({"message": message, "numLikes": numLikes})
+
+
+def contact_us(request):
+    if request.method == "GET":
+        form = ContactForm()
+
+    else:
+        form = ContactForm(data=request.POST)
+
+        if form.is_valid():
+            user_email = form.cleaned_data['email']
+            message_title = form.cleaned_data['title']
+            message_body = form.cleaned_data['body']
+
+            send_mail("Someone answered your question", "Your message has been answered! Go check out your message!", None, recipient_list=[user_email])
+            mail_admins(message_title, message_body, fail_silently=True)
+
+            success(request, "Your message was sent to a local server for testing, thank you!")
+
+            return redirect(to='question_list')
+
+        else:
+            error("Your message couldn't be sent.")
+
+    return render(request, "contact_us.html", {"form": form})

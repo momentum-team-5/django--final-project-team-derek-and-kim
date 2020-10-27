@@ -7,7 +7,7 @@
 <div class="question-container">
 {% for question in question %}
     <div>
-        <h4>{{ question.question }}</h4>
+        <h4><a href="{% url 'question_details' pk=question.pk %}">{{ question.question }}</a></h4>
     </div>
 {% endfor %}
 </div>

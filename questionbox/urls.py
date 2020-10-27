@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
 from questions import views
-# from users import views as user_views
 
 
 urlpatterns = [
@@ -31,7 +30,7 @@ urlpatterns = [
     path('questions/<int:pk>/delete/', views.delete_question, name='delete_question'),
     path('questions/search/', views.search, name='question_search'),
     path('questions/<int:pk>/add_favorite/', views.add_favorite, name='add_favorite'),
-    # path('/users/send/<int:pk>/', user_views.send_email, name='send_email'),
+    path('contact/', views.contact_us, name='contact_us'),
 ]
 
 if settings.DEBUG:

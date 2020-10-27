@@ -19,5 +19,11 @@ class AnswerForm(forms.ModelForm):
         ]
 
 
+class ContactForm(forms.Form):
+    email = forms.EmailField(required=True)
+    title = forms.CharField(required=True, max_length=255)
+    body = forms.CharField(label="Message", widget=forms.Textarea(attrs={'required': True}))
+
+
 class SearchForm(forms.Form):
     question = forms.CharField(max_length=255)
