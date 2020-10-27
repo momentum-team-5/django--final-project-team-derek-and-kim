@@ -11,8 +11,10 @@
         <h2>{{ question.question }}</h2>
     <p>
         <a href="{% url 'add_answer' pk=question.pk %}">Answer Question</a><br>
-        <a href="{% url 'edit_question' pk=question.pk %}">Edit Question</a><br>    
-        <a class="red" href="{% url 'delete_question' pk=question.pk %}">Delete Question</a><br> 
+        {% if request.user.is_authenticated and request.user == question.user %}
+        <a href="{% url 'edit_question' pk=question.pk %}">Edit Question</a><br>  
+        <a class="red" href="{% url 'delete_question' pk=question.pk %}">Delete Question</a><br>
+        {% endif %}
         <a href="{% url 'question_details' pk=question.pk %}">See All Answers</a><br>
     </p>
     </div>

@@ -46,8 +46,9 @@ def add_question(request):
     else:
         form = QuestionForm(data=request.POST)
         if form.is_valid():
-            question = form.save(commit=False)
-            form.save()
+            question = form.save(commit=False) 
+            question.user = request.user
+            question.save()
             return redirect(to='question_list')
 
         else:
@@ -69,7 +70,8 @@ def add_answer(request, pk):
         if form.is_valid():
             answer = form.save(commit=False)
             answer.question = question
-            form.save()
+            answer.user = request.user
+            answer.save()
             return redirect(to='question_list')
 
         else:
@@ -81,6 +83,10 @@ def add_answer(request, pk):
 @login_required
 def edit_question(request, pk):
     question = get_object_or_404(QuestionBox, pk=pk)
+    if request.user != question.user:
+        error(request, "Question can only be edited by the creator")
+        return redirect(to='question_list')
+
     if request.method == 'GET':
         form = QuestionForm(instance=question)
 
@@ -96,11 +102,33 @@ def edit_question(request, pk):
 @login_required
 def delete_question(request, pk):
     question = get_object_or_404(QuestionBox, pk=pk)
+    if request.user != question.user:
+        error(request, "Question can only be deleted by the creator.")
+        return redirect(to="question_list")
+
     if request.method == 'POST':
         question.delete()
+        success(request, "Question deleted!")
+
         return redirect(to='question_list')
 
     return render(request, "delete_question.html", {"question": question})
+
+
+@login_required
+def delete_answer(request, pk):
+    answer = get_object_or_404(AnswerBox, pk=pk)
+    if request.user != answer.user:
+        error(request, "Answer can only be deleted by the creator.")
+        return redirect(to="question_list")
+
+    if request.method == 'POST':
+        answer.delete()
+        success(request, "Answer deleted!")
+
+        return redirect(to='question_list')
+
+    return render(request, "delete_answer.html", {"answer": answer})
 
 
 def search(request):

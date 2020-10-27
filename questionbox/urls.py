@@ -28,6 +28,7 @@ urlpatterns = [
     path('questions/<int:pk>/add_answer/', views.add_answer, name='add_answer'),
     path('questions/<int:pk>/edit/', views.edit_question, name='edit_question'),
     path('questions/<int:pk>/delete/', views.delete_question, name='delete_question'),
+    path('questions/<int:pk>/delete_answer/', views.delete_answer, name='delete_answer'),
     path('questions/search/', views.search, name='question_search'),
     path('questions/<int:pk>/add_favorite/', views.add_favorite, name='add_favorite'),
     path('contact/', views.contact_us, name='contact_us'),
