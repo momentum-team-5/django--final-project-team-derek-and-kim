@@ -120,11 +120,11 @@ def search(request):
 
 @login_required
 def add_favorite(request, pk):
-    question = get_object_or_404(QuestionBox, id=pk)
+    answer = get_object_or_404(AnswerBox, id=pk)
 
     if request.user.is_authenticated:
-        if question.favorites.filter(id=request.user.pk).count() == 0:
-            question.favorites.add(request.user)
+        if answer.favoriting_users.filter(id=request.user.pk).count() == 0:
+            answer.favoriting_users.add(request.user)
             message = "Favorite added!"
 
         else:
@@ -132,5 +132,7 @@ def add_favorite(request, pk):
         
     else:
         message = "Only signed in users can favorite answers."
+
+    numLikes = answer.numfavorites()
 
     return JsonResponse({"message": message, "numLikes": numLikes})

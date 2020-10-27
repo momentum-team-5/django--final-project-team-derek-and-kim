@@ -6,5 +6,7 @@ function sendFavorite(source, url) {
             source.textContent = `${json.numLikes} favorites`;
         }
         alert(json.message);
+    }) .catch(e => {
+        console.log(e);
     })
 }
