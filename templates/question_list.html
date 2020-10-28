@@ -3,19 +3,25 @@
 {% block content %}
 <h1><center>All Questions</center></h1>
 <p><center><a id="ask_question" href="{% url 'add_question' %}">Ask a Question!</a></center></p>
-
+<div class="question_container">
 {% for question in question %}
+<<<<<<< HEAD
 <div id="mydiv" style="border: dotted 1px black" >
+=======
+
+<div class="mydiv"style="border: dotted 1px black" >
+>>>>>>> 68166f1a5c89972064c1a69fc5e9ab05d3bc557a
     <h2><a id="link" href="{% url 'question_details' pk=question.pk %}">{{ question.question }}</a></h2>
     <p id="question_info"> 
         {% if request.user.is_authenticated %}
         <a id="link" href="{% url 'add_answer' pk=question.pk %}">Answer Question</a><br>
-        {% endif %}
-        {% if request.user.is_authenticated and request.user == question.user %}
-        <a id="link" href="{% url 'edit_question' pk=question.pk %}">Edit Question</a><br>  
-        <a id="link" class="red" href="{% url 'delete_question' pk=question.pk %}">Delete Question</a><br>
-        {% endif %}
+            {% endif %}
+            {% if request.user.is_authenticated and request.user == question.user %}
+            <a id="link" href="{% url 'edit_question' pk=question.pk %}">Edit Question</a><br>  
+            <a id="link" class="red" href="{% url 'delete_question' pk=question.pk %}">Delete Question</a><br>
+            {% endif %}
     </p>
 </div>
 {% endfor %}
+</div>
 {% endblock %}

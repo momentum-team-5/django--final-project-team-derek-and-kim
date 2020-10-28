@@ -34,11 +34,23 @@ nav a:hover {
     text-decoration-color:  rgb(198, 198, 186);
 }
 
-#mydiv { border: dotted 1px black; margin: 10px;
+.mydiv { border: dotted 1px black; margin: 10px;
     background-color: white;
     padding: 10px;
     border-radius: 10px;
+    width: 33.3%;   
+    flex-basis: 350px;
 }
+
+.question_container {
+    display: flex;    
+    flex-direction: row; 
+    flex-wrap: wrap;   
+    align-items: center;    
+    align-content: center; 
+    
+}
+
 
 #ask_question {
     font-style: italic;
@@ -48,7 +60,6 @@ nav a:hover {
     padding: 5px;
     margin: 100px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-
 
 }
 #ask_question:hover {
