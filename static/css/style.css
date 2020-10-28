@@ -7,6 +7,7 @@
 a {
     color: black;
 }
+
 nav {display: flex;
     flex: 1 1 auto;
     flex-direction: row;
@@ -14,12 +15,12 @@ nav {display: flex;
     background-color: #f7e309;
     justify-content:space-around ;
     margin: 10px
-
 }
 
 p {
     margin: 50px
 }
+
 h1 {
     font-size: large;
     font-style: italic;
@@ -28,19 +29,15 @@ h1 {
 h2 {
     font-size: medium;
     font-style: italic;
-
 }
 
 body {
     padding: 0px;
     margin: 15px;
     background: linear-gradient( to right, #00AAFF, #00FF6c);
-
 }
-
 
 main {
     margin-left: 1em;
     margin-right: 1em;
- 
 }
