@@ -6,7 +6,7 @@
 
 {% for question in question %}
 <div id="mydiv"style="border: dotted 1px black" >
-    <h2>{{ question.question }}</h2>
+    <h2><a id="link" href="{% url 'question_details' pk=question.pk %}">{{ question.question }}</a></h2>
     <p id="question_info"> 
         {% if request.user.is_authenticated %}
         <a id="link" href="{% url 'add_answer' pk=question.pk %}">Answer Question</a><br>
@@ -15,7 +15,6 @@
         <a id="link" href="{% url 'edit_question' pk=question.pk %}">Edit Question</a><br>  
         <a id="link" class="red" href="{% url 'delete_question' pk=question.pk %}">Delete Question</a><br>
         {% endif %}
-        <a id="link" href="{% url 'question_details' pk=question.pk %}">See All Answers</a><br>
     </p>
 </div>
 {% endfor %}
