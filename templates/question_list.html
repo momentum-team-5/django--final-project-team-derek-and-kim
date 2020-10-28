@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <h1><center>All Questions</center></h1>
 <p><center><a id="ask_question" href="{% url 'add_question' %}">Ask a Question!</a></center></p>
 
-    {% for question in question %}
+{% for question in question %}
 <div id="mydiv"style="border: dotted 1px black" >
     <h2>{{ question.question }}</h2>
     <p id="question_info"> 
@@ -18,6 +17,6 @@
         {% endif %}
         <a id="link" href="{% url 'question_details' pk=question.pk %}">See All Answers</a><br>
     </p>
-    </div>
-    {% endfor %}
+</div>
+{% endfor %}
 {% endblock %}

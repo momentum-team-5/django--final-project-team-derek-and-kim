@@ -22,21 +22,20 @@ nav {display: flex;
     justify-content:space-around ;
     margin: 20px;
     border: black;
-
 }
+
 #mydiv { border: dotted 1px black; margin: 10px;
     background-color: white;
     padding: 10px;
     border-radius: 10px;
-    
 }
+
 #ask_question {
     font-style: italic;
-
 }
+
 #link {
     color: rgb(0, 0, 0);
-    
 }
 #link:hover {
     background-color: #f7e309;
@@ -51,6 +50,7 @@ nav {display: flex;
 #question_box {
     
 }
+
 .button {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -76,14 +76,12 @@ h2 {
     font-size: large;
     font-style: italic;
     color: #000000;
-
 }
 
 body {
     padding: 0px;
     margin: 15px;
     background: rgb(198, 198, 186)
-
 }
 
 
