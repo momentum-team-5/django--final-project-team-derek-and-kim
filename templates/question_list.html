@@ -5,7 +5,7 @@
 <p><center><a id="ask_question" href="{% url 'add_question' %}">Ask a Question!</a></center></p>
 
 {% for question in question %}
-<div id="mydiv"style="border: dotted 1px black" >
+<div id="mydiv" style="border: dotted 1px black" >
     <h2><a id="link" href="{% url 'question_details' pk=question.pk %}">{{ question.question }}</a></h2>
     <p id="question_info"> 
         {% if request.user.is_authenticated %}
