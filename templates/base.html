@@ -24,11 +24,11 @@
         </nav>
     </header>
     <div class="content">
-    {% for message in messages %}
-    <p>{{ message }}</p>
-    {% endfor %}
-    {% block content %}
-    {% endblock %}
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+        {% block content %}
+        {% endblock %}
     </div>
 </body>
 </html>

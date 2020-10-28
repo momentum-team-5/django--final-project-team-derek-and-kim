@@ -51,7 +51,6 @@ nav a:hover {
     
 }
 
-
 #ask_question {
     font-style: italic;
     font-size: larger;
@@ -60,8 +59,8 @@ nav a:hover {
     padding: 5px;
     margin: 100px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-
 }
+
 #ask_question:hover {
     background-color: #f7e309;
     color: white;
@@ -79,13 +78,6 @@ nav a:hover {
     font-size: small;
     color: white;
 }
-
-
-#question_box {
-    
-}
-
-
 
 p {
     margin: 10px
