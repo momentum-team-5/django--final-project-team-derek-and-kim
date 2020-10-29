@@ -40,6 +40,7 @@ nav a:hover {
     border-radius: 10px;
     width: 33.3%;   
     flex-basis: 350px;
+    box-shadow: 5px 10px #888888;
 }
 
 .question_container {
@@ -48,6 +49,7 @@ nav a:hover {
     flex-wrap: wrap;   
     align-items: center;    
     align-content: center; 
+    justify-content: flex-start;
     
 }
 
